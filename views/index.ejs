@@ -89,6 +89,10 @@ html, body {
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <form name='registration' onsubmit="return checkform(this)" method="post" action='/register'>
         <h2 class="text-center">Registration form</h2>
+        <p id="first_error" style="color:red;"></p>
+        <p id="last_error" style="color:red;"></p>
+        <p id="password_error" style="color:red;"></p>
+
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
@@ -256,6 +260,44 @@ function checkform(theform){
     alert(why);
     return false;
   }
+  var firstname = document.forms['registration']['first_name'].value
+
+    var pattern = /[^a-z]/i
+        if(firstname.length <= 2 ||  firstname.length >= 40 || firstname.match(pattern) )
+        {
+
+            document.getElementById('first_error').innerHTML = 'firstname should be more than 2 chars && less than 40 chars && a-z'
+
+            return false
+        }
+
+  var lastname = document.forms['registration']['last_name'].value
+
+          var pattern = /[^a-z]/i
+     if(lastname.length <= 2 ||  lastname.length >= 40 || lastname.match(pattern) )
+     {
+       document.getElementById('last_error').innerHTML = 'firstname should be more than 2 chars && less than 40 chars && a-z'
+       return false
+
+     }
+  var password = document.forms['registration']['password'].value
+  var password2 = document.forms['registration']['password_confirmation'].value
+      var pattern = /[^a-z]/i
+      var isAlphaNumeric = false
+      for(var i=0; i < password.length; i++) {
+
+               if(!isNaN(parseInt(password[i]))) isAlphaNumeric = true
+          }
+
+
+   console.log(password)
+   console.log(password2)
+      if(password !== password2 || !isisAlphaNumeric)
+        {
+           document.getElementById('password_error').innerHTML = 'Passwords should match and should be Alpha Numeric'
+           return false
+}
+
 }
 
 var a = Math.ceil(Math.random() * 9)+ '';
@@ -277,10 +319,15 @@ function ValidCaptcha(){
   }else{
     return false;
   }
+
+
 }
 
 // Remove the spaces from the entered and generated code
 function removeSpaces(string){
   return string.split(' ').join('');
 }
+
+
+
 </script>
