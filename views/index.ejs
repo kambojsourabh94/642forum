@@ -1,10 +1,286 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+.capbox {
+  text-align: center;
+  background-color: #92D433;
+  border: #B3E272 0px solid;
+  border-width: 0px 12px 0px 0px;
+  display: inline-block;
+  *display: inline; zoom: 1; /* FOR IE7-8 */
+  padding: 8px 40px 8px 8px;
+}
+
+.capbox-inner {
+  font: bold 11px arial, sans-serif;
+  color: #000000;
+  background-color: #DBF3BA;
+  margin: 5px auto 0px auto;
+  padding: 3px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#CaptchaDiv {
+  font: bold 17px verdana, arial, sans-serif;
+  font-style: italic;
+  color: #000000;
+  background-color: #FFFFFF;
+  padding: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#CaptchaInput { margin: 1px 0px 1px 0px; width: 135px; }
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+<style>
+#locationField, #controls {
+  position: relative;
+  width: 480px;
+}
+
+.label {
+  text-align: right;
+  font-weight: bold;
+  width: 100px;
+  color: #303030;
+}
+
+#address td {
+  font-size: 10pt;
+}
+.field {
+  width: 99%;
+}
+.slimField {
+  width: 80px;
+}
+.wideField {
+  width: 200px;
+}
+#locationField {
+  height: 20px;
+  margin-bottom: 2px;
+}
+#checkbox{
+  margin-left: auto;
+}
+
+</style>
 
 
-<form action='/register' method ='post'>
+<div class="container">
 
-<input type="text" name="firstname">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form name='registration' onsubmit="return checkform(this)" method="post" action='/register'>
+        <h2 class="text-center">Registration form</h2>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" name="Address" id="Address" class="form-control input-lg" placeholder="Address" tabindex="3">
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="Zip" id="Zip" class="form-control input-lg" placeholder="Zip Code" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="State" id="State" class="form-control input-lg" placeholder="State" tabindex="2">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
 
-<input type='submit'>
+
+              <select class="form-control" id="sel1" name="education">
+                <option value="Select">Education Level</option>
+                <option value="High School">High School</option>
+                <option value="College">College</option>
+                <option value="Graduate Studies">Graduate Studies</option>
+                <option value="Ph.D">Ph.D</option>
+              </select>
+            </div>
+          </div>
 
 
-</form>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+
+
+              <select class="form-control" id="sel1" name="income">
+                <option value="Income">Income</option>
+                <option value="less than $ 50K">less than $ 50K</option>
+                <option value="between $50-100 K">between $50-100 K</option>
+                <option value="above $100 K">above $100 K</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <div class="form-group">
+            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <div class="form-group">
+            <input type="text" name="phone" id="phone" class="form-control input-lg" placeholder="Phone Number" tabindex="2">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+          <div class="form-group">
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+        <div class="capbox" align="center">
+
+
+          <div id="CaptchaDiv" align="center"></div>
+
+          <div class="capbox-inner"  align="center">
+            Type the above number:
+
+            <input type="hidden" id="txtCaptcha">
+            <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+          </div>
+        </div>
+        <div class="row">
+          <div id="checkbox" class="col-xs-3 col-sm-2">
+            <div class="form-group">
+
+              <span class="button-checkbox">
+                <label class="checkbox"><input type="checkbox" class="btn btn-primary" data-dismiss="modal">I Agree</label>
+
+              </span>
+            </div>
+
+          </div>
+
+          <div class="col-xs-9 col-sm-10">
+
+            By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+          </div>
+        </div>
+
+
+        <div class="form-group">
+
+          <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+        </div>
+        <!-- <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+      </div> -->
+      <div class="modal-footer">
+        <label class="check-box"></label><input type="checkbox" class="btn btn-primary" data-dismiss="modal">I Agree</label>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+<script type="text/javascript">
+
+// Captcha Script
+
+function checkform(theform){
+  var why = "";
+
+  if(theform.CaptchaInput.value == ""){
+    why += "- Please Enter CAPTCHA Code.\n";
+  }
+  if(theform.CaptchaInput.value != ""){
+    if(ValidCaptcha(theform.CaptchaInput.value) == false){
+      why += "- The CAPTCHA Code Does Not Match.\n";
+    }
+  }
+  if(why != ""){
+    alert(why);
+    return false;
+  }
+}
+
+var a = Math.ceil(Math.random() * 9)+ '';
+var b = Math.ceil(Math.random() * 9)+ '';
+var c = Math.ceil(Math.random() * 9)+ '';
+var d = Math.ceil(Math.random() * 9)+ '';
+var e = Math.ceil(Math.random() * 9)+ '';
+
+var code = a + b + c + d + e;
+document.getElementById("txtCaptcha").value = code;
+document.getElementById("CaptchaDiv").innerHTML = code;
+
+// Validate input against the generated number
+function ValidCaptcha(){
+  var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+  var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+  if (str1 == str2){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+// Remove the spaces from the entered and generated code
+function removeSpaces(string){
+  return string.split(' ').join('');
+}
+</script>

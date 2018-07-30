@@ -19,7 +19,20 @@ app.get('/', (req, res)=> {
 
 app.post('/register', (req, res)=> {
 
-	  console.log(req.body.firstname)
+
+console.log(req.body)
+	 res.render('display', {
+	 	firstname: req.body.first_name,
+	 	lastname: req.body.last_name,
+	 	email: req.body.email,
+	 	phone: req.body.phone,
+		income: req.body.income,
+		address: req.body.Address,
+		zip: req.body.Zip,
+		state: req.body.State
+	 	 })
+
+
 })
 app.listen(process.env.PORT || 3000, () => {
 	  console.log('server running ')
