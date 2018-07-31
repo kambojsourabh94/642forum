@@ -110,8 +110,8 @@ html, body {
           </div>
         </div>
         <div class="form-group">
-          <!-- <input type="text" name="Address" id="Address" class="form-control input-lg" placeholder="Address *" > -->
-          <input id="autocomplete" onFocus="geolocate()" type="text" name="Address" placeholder="Address *" class="form-control" tabindex="3" required>
+          <input type="text" name="Address" id="Address" class="form-control input-lg" placeholder="Address *" >
+          <!-- <input id="autocomplete" onFocus="geolocate()" type="text" name="Address" placeholder="Address *" class="form-control" tabindex="3" required> -->
 
         </div>
         <div class="row">
@@ -289,6 +289,30 @@ function checkform(theform)
        return false
 
      }
+
+     var zipcode = document.getElementById('zip').value
+     var notNumber = false
+
+     for(var i=0; i < zipcode.length; i++){
+
+         if(isNaN(parseInt(zipcode[i]))){
+
+              notNumber = true
+              break;
+         }
+     }
+
+
+
+   if(notNumber || zipcode.length !== 5) {
+
+    document.getElementById('phone_error').innerHTML = 'zip code should be 5 digits and number'
+
+    return false
+
+    }
+
+
   var password = document.forms['registration']['password'].value
   var password2 = document.forms['registration']['password_confirmation'].value
       var pattern = /[^a-z]/i
@@ -305,6 +329,30 @@ function checkform(theform)
            return false
          }
 
+
+
+
+      var phone = document.getElementById('phone').value
+
+     var noNumber = false
+
+     for(var i=0; i < phone.length; i++){
+         if(isNaN(parseInt(phone[i]))){
+
+              noNumber = true
+              break;
+         }
+     }
+
+
+
+   if(noNumber || phone.length !== 10) {
+
+    document.getElementById('phone_error').innerHTML = 'Phone should be all numbers and 10 digits'
+
+    return false
+
+    }
 
 }
 
