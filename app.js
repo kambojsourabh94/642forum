@@ -28,9 +28,13 @@ console.log(req.body)
 	 	phone: req.body.phone,
 		income: req.body.income,
 		address: req.body.Address,
-		zip: req.body.Zip,
+		zip: req.body.zip,
 		state: req.body.State
 	 	 })
+
+console.log(req.body)
+	res.render('terms', {
+		terms:req.body.Terms})
 
 
 })

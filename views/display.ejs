@@ -1,15 +1,39 @@
 <html>
 
+<center>
+  <h1>Results verification page  </h1>
+  <h2>Welcome <%=firstname%> <%=lastname%>!</h2>
 
-<h1><%=firstname%></h1>
-<h1><%=lastname%></h1>
-<h1><%=email%></h1>
-<h1><%=phone%></h1>
-<h1><%=address%></h1>
-<h1><%=zip%></h1>
-<h1><%=state%></h1>
+  <font size="4.5">
+    <p>First Name: <%=firstname%></p>
+    <p>Last Name: <%=lastname%></p>
+    <p>Email: <%=email%></p>
+    <p>Phone Number: <%=phone%></p>
+    <p>Address: <%=address%></p>
+    <p>ZipCode: <%=zip%></p>
+    <p>State: <%=state%></p>
+  </font>
+</center>
 
 
 
+<center>
+    <h1>Your address:</h1>
 
-</html>
+    <div id="map" style="width:360px;height:360px;background:yellow"></div>
+
+    <script>
+        function myMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(37.35, -122.0),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        }
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        }
+    </script>
+
+</center>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_xjZpI3V3ANihgfctrqPRMpDDHmk85PM&callback=myMap"></script>
+<html>
