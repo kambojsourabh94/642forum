@@ -40,7 +40,6 @@
 #map {
   height: 100%;
 }
-/* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
   margin: 0;
@@ -252,8 +251,7 @@ html, body {
 </div>
 <script type="text/javascript">
 
-// Captcha Script
-
+//function to validate the form
 function checkform(theform)
 {
   var why = "";
@@ -402,7 +400,7 @@ function checkform(theform)
     }
 
 }
-
+//captch renewal
 var a = Math.ceil(Math.random() * 9)+ '';
 var b = Math.ceil(Math.random() * 9)+ '';
 var c = Math.ceil(Math.random() * 9)+ '';
@@ -431,6 +429,8 @@ function removeSpaces(string){
   return string.split(' ').join('');
 }
 </script>
+
+<!-- google maps api -->
 <script>
   // This example displays an address form, using the autocomplete feature
   // of the Google Places API to help users fill in the information.
