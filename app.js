@@ -31,13 +31,12 @@ console.log(req.body)
 		zip: req.body.zip,
 		state: req.body.State
 	 	 })
-
-console.log(req.body)
-	res.render('terms', {
-		terms:req.body.Terms})
+res.render('index.ejs', { link: "terms.html" });
 
 
 })
+
+
 app.listen(process.env.PORT || 3000, () => {
 	  console.log('server running ')
 })
